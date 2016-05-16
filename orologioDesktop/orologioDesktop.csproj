@@ -75,9 +75,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SQLiteExample\SQLiteExample\SQLiteExample\bin\Debug\System.Data.SQLite.dll</HintPath>
+      <HintPath>System.Data.SQLite.Core.1.0.99.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -212,6 +212,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="System.Data.SQLite.Core.1.0.99.0\build\net20\System.Data.SQLite.Core.targets" />
+    <None Include="System.Data.SQLite.Core.1.0.99.0\build\net40\System.Data.SQLite.Core.targets" />
+    <None Include="System.Data.SQLite.Core.1.0.99.0\build\net451\System.Data.SQLite.Core.targets" />
+    <None Include="System.Data.SQLite.Core.1.0.99.0\build\net45\System.Data.SQLite.Core.targets" />
+    <None Include="System.Data.SQLite.Core.1.0.99.0\build\net46\System.Data.SQLite.Core.targets" />
+    <None Include="System.Data.SQLite.Core.1.0.99.0\System.Data.SQLite.Core.1.0.99.0.nupkg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -237,7 +243,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="spash.png" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net20\x64\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net20\x86\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net40\x64\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net40\x86\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net451\x64\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net451\x86\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net45\x64\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net45\x86\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net46\x64\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\build\net46\x86\SQLite.Interop.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net20\System.Data.SQLite.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net20\System.Data.SQLite.xml" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net40\System.Data.SQLite.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net40\System.Data.SQLite.xml" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net451\System.Data.SQLite.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net451\System.Data.SQLite.xml" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net45\System.Data.SQLite.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net45\System.Data.SQLite.xml" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net46\System.Data.SQLite.dll" />
+    <Content Include="System.Data.SQLite.Core.1.0.99.0\lib\net46\System.Data.SQLite.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.IO;
 namespace orologioDesktop
 {
     public partial class addvariousForm : Form
@@ -41,7 +42,7 @@ namespace orologioDesktop
 
 
             buttonToolTip.SetToolTip(new_db, "Αν υπάρχει ήδη το αρχείο daskaloi.db, θα παραμείνει ως έχει και δεν θα επαναδημιουργηθεί.  ");
-        
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,14 +54,40 @@ namespace orologioDesktop
 
         private void new_db_Click(object sender, EventArgs e)
         {
-            if (!System.IO.File.Exists("daskaloi.db"))
+            long s1;
+            if (System.IO.File.Exists("daskaloi.db"))
             {
-              
+                FileInfo f = new FileInfo("daskaloi.db");
+                s1 = f.Length;
+            }
+            else s1 = 0;
+
+            if (!System.IO.File.Exists("daskaloi.db") || (System.IO.File.Exists("daskaloi.db") && s1 == 0))
+            {
+
                 SQLiteConnection sqlite2;
                 using (sqlite2 = new SQLiteConnection(@"Data Source=daskaloi.db;Version=3;foreign keys=True;"))
                 {
                     sqlite2.Open();
-                    string sql = @"CREATE TABLE Taksi (
+                    string sql = @"
+
+
+
+
+
+DROP TABLE IF EXISTS daskaloi.Taksi;
+DROP TABLE IF EXISTS daskaloi.Daskaloi;
+DROP TABLE IF EXISTS daskaloi.Imeres;
+DROP TABLE IF EXISTS daskaloi.Tmimata;
+DROP TABLE IF EXISTS daskaloi.Mathimata;
+DROP TABLE IF EXISTS daskaloi.Programma;
+
+
+
+
+
+
+CREATE TABLE Taksi (
 	`id_taksi`	INTEGER PRIMARY KEY AUTOINCREMENT,
 	`onoma`	TEXT,
 	`ImagePath`	TEXT
@@ -270,42 +297,48 @@ BEGIN
     UPDATE Programma SET id_daskaloi = NEW.id_daskalos  WHERE id_tmimata = OLD.id_tmimata;
    
 END";
-                  
 
-                   
-                    
-                    
-                    try 
-{
 
-    Cursor.Current = Cursors.WaitCursor; 
+
+
+
+                    try
+                    {
+
+                        Cursor.Current = Cursors.WaitCursor;
                         SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
-  command.ExecuteNonQuery();
-  Cursor.Current = Cursors.AppStarting;
+                        command.ExecuteNonQuery();
+                        Cursor.Current = Cursors.AppStarting;
                         MessageBox.Show("H βάση δεδομένων δημιουργήθηκε επιτυχώς");
-} 
-catch (SqlException ex) 
-{     
-MessageBox.Show(ex.ToString()); 
-}
-catch (Exception ex) 
-{     
-MessageBox.Show(ex.ToString()); 
-} 
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
 
-finally 
-{
-    sqlite2.Close();
-};
-                    
-                    
-                    
-                    
-                  
+                    finally
+                    {
+                        sqlite2.Close();
+                    };
 
-                   
+
+
+
+
+
+
                 }
             }
+
+            else
+                MessageBox.Show("Υπάρχει βάση δεδομένων");
+
+
+
         }
     }
 }
